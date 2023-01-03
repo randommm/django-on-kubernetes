@@ -1,0 +1,12 @@
+auth:
+  enabled: true
+  rootUser: "root"
+  rootPassword: "root_user_password_to_be_used"
+  usernames: ["username_to_be_used"]
+  passwords: ["password_to_be_used"]
+  databases: ["django_database"]
+
+primary:
+  persistence:
+    enabled: true
+    size: "8Gi"

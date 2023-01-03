@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-django-conf
+type: Opaque
+stringData:
+  host: "mongodb"
+  database: "django_database"
+  username: "username_to_be_used"
+  password: "password_to_be_used"

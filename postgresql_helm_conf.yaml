@@ -1,0 +1,11 @@
+auth:
+  enablePostgresUser: true
+  postgresPassword: "root_user_password_to_be_used"
+  username: "username_to_be_used"
+  password: "password_to_be_used"
+  database: "django_database"
+
+primary:
+  persistence:
+    enabled: true
+    size: "8Gi"
