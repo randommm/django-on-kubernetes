@@ -119,7 +119,7 @@ spec:
   selector:
     app: django
   ports:
-  - name: name-of-service-port
+  - name: http
     protocol: TCP
     port: 80
 ---
