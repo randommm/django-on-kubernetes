@@ -7,4 +7,3 @@ COPY pyproject.toml /django_app/app/pyproject.toml
 RUN cd /django_app/app && ls && poetry install
 
 COPY django_website /django_app/app
-

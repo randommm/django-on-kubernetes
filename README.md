@@ -361,8 +361,24 @@ Note that if you are using GKE, you need to add an annotation to your Ingress:
     metadata:
       name: ingress-app
       annotations:
+        kubernetes.io/ingress.class: gce
+    spec:
+    ...
+
+Moreover, an alternative, you can install the nginx controller (see https://kubernetes.github.io/ingress-nginx/deploy), on GKE this is done by running:
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml`
+
+And changing the annotation plus `spec.ingressClassName`:
+
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: ingress-app
+      annotations:
         kubernetes.io/ingress.class: nginx
     spec:
+      ingressClassName: nginx
     ...
 
 You can add more websites by deploying then, creating additional `ClusterIP` services and adding rules to the ingress policy, e.g.:
