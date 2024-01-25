@@ -203,42 +203,45 @@ Deploy using PostgreSQL
 
 Edit file django_conf.yaml and remove the following lines refering to MongoDB configuration:
 
-  - name: MONGOHOST
-    valueFrom:
-      secretKeyRef:
-        name: mongo-django-conf
-        key: host
-        optional: false
-  - name: MONGODATABASE
-    valueFrom:
-      secretKeyRef:
-        name: mongo-django-conf
-        key: database
-        optional: false
-  - name: MONGOUSER
-    valueFrom:
-      secretKeyRef:
-        name: mongo-django-conf
-        key: username
-        optional: false
-  - name: MONGOPASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: mongo-django-conf
-        key: password
-        optional: false
+      - name: MONGOHOST
+        valueFrom:
+          secretKeyRef:
+            name: mongo-django-conf
+            key: host
+            optional: false
+      - name: MONGODATABASE
+        valueFrom:
+          secretKeyRef:
+            name: mongo-django-conf
+            key: database
+            optional: false
+      - name: MONGOUSER
+        valueFrom:
+          secretKeyRef:
+            name: mongo-django-conf
+            key: username
+            optional: false
+      - name: MONGOPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mongo-django-conf
+            key: password
+            optional: false
 
 Edit the username and password at postgres_helm_conf.yaml and django_postgres_conf.yaml
 
 Then install postgres on Kubernetes using helm:
 
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
+
 `helm repo update`
+
 `helm install postgresql -f postgresql_helm_conf.yaml bitnami/postgresql`
 
 And run:
 
 `kubectl apply -f django_postgresql_conf.yaml`
+
 `kubectl apply -f django_conf.yaml`
 
 Check the IP address of the website with
@@ -247,10 +250,10 @@ Check the IP address of the website with
 
 You can optinally setup the pgAdmin webserver, first edit the email login and initial password at file pgadmin_conf.yaml
 
-  - name: PGADMIN_DEFAULT_EMAIL
-    value: user@somedomain.com
-  - name: PGADMIN_DEFAULT_PASSWORD
-    value: choose_the_initial_pgadmin_password
+      - name: PGADMIN_DEFAULT_EMAIL
+        value: user@somedomain.com
+      - name: PGADMIN_DEFAULT_PASSWORD
+        value: choose_the_initial_pgadmin_password
 
 and then run
 
@@ -267,42 +270,45 @@ Deploy using MongoDB
 
 Edit file django_conf.yaml and remove the following lines refering to PostgreSQL configuration:
 
-  - name: PGHOST
-    valueFrom:
-      secretKeyRef:
-        name: pg-django-conf
-        key: host
-        optional: false
-  - name: PGDATABASE
-    valueFrom:
-      secretKeyRef:
-        name: pg-django-conf
-        key: database
-        optional: false
-  - name: PGUSER
-    valueFrom:
-      secretKeyRef:
-        name: pg-django-conf
-        key: username
-        optional: false
-  - name: PGPASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: pg-django-conf
-        key: password
-        optional: false
+      - name: PGHOST
+        valueFrom:
+          secretKeyRef:
+            name: pg-django-conf
+            key: host
+            optional: false
+      - name: PGDATABASE
+        valueFrom:
+          secretKeyRef:
+            name: pg-django-conf
+            key: database
+            optional: false
+      - name: PGUSER
+        valueFrom:
+          secretKeyRef:
+            name: pg-django-conf
+            key: username
+            optional: false
+      - name: PGPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: pg-django-conf
+            key: password
+            optional: false
 
 Edit the username and password at mongo_helm_conf.yaml and django_mongo_conf.yaml
 
 Then install mongo on Kubernetes using helm:
 
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
+
 `helm repo update`
+
 `helm install mongodb -f mongodb_helm_conf.yaml bitnami/mongodb`
 
 And run:
 
 `kubectl apply -f django_mongodb_conf.yaml`
+
 `kubectl apply -f django_conf.yaml`
 
 Check the IP address of the website with
